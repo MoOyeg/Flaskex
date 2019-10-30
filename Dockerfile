@@ -2,11 +2,11 @@ FROM python:3
 
 WORKDIR /usr/src/app
 
-RUN chgrp -R 0 /usr/src && \
-    chmod -R g=u /usr/src
-
 COPY requirements.txt ./
 COPY uid_entrypoint ./
+
+RUN chgrp -R 0 /usr/src && \
+    chmod -R g=u /usr/src
 
 RUN pip install --no-cache-dir -r requirements.txt
 
