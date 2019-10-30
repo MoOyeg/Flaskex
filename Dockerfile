@@ -9,6 +9,7 @@ RUN chgrp -R 0 /usr/src && \
     chmod -R g=u /usr/src
 
 RUN pip install --no-cache-dir -r requirements.txt
+RUN export $PATH=$PATH:/usr/src/app
 
 COPY . .
 EXPOSE 5000/tcp
