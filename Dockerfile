@@ -21,6 +21,6 @@ EXPOSE 5000/tcp
 USER 10001
 
 ### user name recognition at runtime w/ an arbitrary uid - for OpenShift deployments
-ENTRYPOINT [ "/uid_entrypoint" ]
+#ENTRYPOINT [ "/uid_entrypoint" ]
 
 CMD [ "python", "app.py" ]
