@@ -5,15 +5,15 @@ FROM python:3
 
 WORKDIR ${WORK_DIR}
 
-COPY requirements.txt ./
-COPY uid_entrypoint ./
+COPY requirements.txt ${WORK_DIR}
+COPY uid_entrypoint ${WORK_DIR}
 
-RUN chmod -R ugo+x uid_entrypoint && \
-    chgrp -R 0 /../.. && \
-    chmod -R g=u /usr/src
+RUN chmod -R ugo+x ${WORK_DIR}/uid_entrypoint && \
+    chgrp -R 0 ${WORK_DIR} && \
+    chmod -R g=u ${WORK_DIR}
 
 RUN pip install --no-cache-dir -r requirements.txt
-RUN export PATH=$PATH:/usr/src/app
+RUN export PATH=$PATH:${WORK_DIR}
 
 COPY . .
 EXPOSE 5000/tcp
