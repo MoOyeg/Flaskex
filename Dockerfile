@@ -1,6 +1,9 @@
+#Dockerfile for Openshift
+#Must pass $WORK_DIR in build environment
+
 FROM python:3
 
-WORKDIR ${WORKDIR}
+WORKDIR ${WORK_DIR}
 
 COPY requirements.txt ./
 COPY uid_entrypoint ./
@@ -19,6 +22,6 @@ EXPOSE 5000/tcp
 USER 10001
 
 ### user name recognition at runtime w/ an arbitrary uid - for OpenShift deployments
-ENTRYPOINT [ "${WORKDIR}/uid_entrypoint" ]
+ENTRYPOINT [ "${WORK_DIR}/uid_entrypoint" ]
 
 CMD [ "python", "app.py" ]
