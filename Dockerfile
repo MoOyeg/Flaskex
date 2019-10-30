@@ -1,12 +1,12 @@
 FROM python:3
 
-WORKDIR /usr/src/app
+WORKDIR $WORKDIR
 
 COPY requirements.txt ./
 COPY uid_entrypoint ./
 
-RUN chmod ugo+x ./uid_entrypoint && \
-    chgrp -R 0 /usr/src && \
+RUN chmod -R ugo+x uid_entrypoint && \
+    chgrp -R 0 /../.. && \
     chmod -R g=u /usr/src
 
 RUN pip install --no-cache-dir -r requirements.txt
