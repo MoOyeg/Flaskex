@@ -5,7 +5,8 @@ WORKDIR /usr/src/app
 COPY requirements.txt ./
 COPY uid_entrypoint ./
 
-RUN chgrp -R 0 /usr/src && \
+RUN chmod ugo+x ./uid_entrypoint && \
+    chgrp -R 0 /usr/src && \
     chmod -R g=u /usr/src
 
 RUN pip install --no-cache-dir -r requirements.txt
@@ -19,4 +20,5 @@ USER 10001
 
 ### user name recognition at runtime w/ an arbitrary uid - for OpenShift deployments
 ENTRYPOINT [ "/usr/src/app/uid_entrypoint" ]
+
 CMD [ "python", "app.py" ]
