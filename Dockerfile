@@ -6,14 +6,13 @@ FROM python:3
 WORKDIR ${WORK_DIR}
 
 COPY requirements.txt ${WORK_DIR}
-COPY uid_entrypoint ${WORK_DIR}
+COPY uid_entrypoint /
 
 RUN chgrp -R 0 ${WORK_DIR} && \
     chmod -R g=u ${WORK_DIR} && \
-    chmod -R ugo+x ${WORK_DIR}/uid_entrypoint 
+    chmod -R ugo+x /uid_entrypoint 
 
 RUN pip install --no-cache-dir -r requirements.txt
-RUN export PATH=$PATH:${WORK_DIR}
 
 COPY . .
 EXPOSE 5000/tcp
@@ -22,6 +21,6 @@ EXPOSE 5000/tcp
 USER 10001
 
 ### user name recognition at runtime w/ an arbitrary uid - for OpenShift deployments
-ENTRYPOINT [ "uid_entrypoint" ]
+ENTRYPOINT [ "/uid_entrypoint" ]
 
 CMD [ "python", "app.py" ]
