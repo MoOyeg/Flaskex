@@ -8,9 +8,8 @@ RUN mkdir -p ${WORK_DIR}
 COPY requirements.txt ${WORK_DIR}
 
 # Adjust permissions on /etc/passwd so writable by group root.
+RUN chgrp -R 0 ${WORK_DIR} && chmod -R g=u ${WORK_DIR}
 RUN chmod g+w /etc/passwd
-RUN chgrp -Rf root ${WORK_DIR}
-RUN chmod -Rf g+w ${WORK_DIR}
 
 #Install PIP
 WORKDIR ${WORK_DIR}
