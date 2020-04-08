@@ -6,7 +6,8 @@ FROM python:3
 USER root
 RUN mkdir -p ${WORK_DIR}
 COPY requirements.txt ${WORK_DIR}
-COPY uid_entrypoint /
+RUN touch /usr/local/lib/python3.8/site-packages/scripts
+RUN echo "${WORK_DIR}/scripts" > /usr/local/lib/python3.8/site-packages/scripts
 
 # Adjust permissions on /etc/passwd so writable by group root.
 RUN chmod g+w /etc/passwd
