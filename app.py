@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+import sys
+sys.path.append("./")
 from scripts import tabledef
 from scripts import forms
 from scripts import helpers
