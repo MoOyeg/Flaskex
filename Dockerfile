@@ -19,7 +19,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 #Expose Ports
 EXPOSE 5000/tcp
 
-### Containers should NOT run as root as a good practice
-USER 10001
-
 CMD [ "python", "app.py" ]
