@@ -14,7 +14,7 @@
 <p align="center"><img src="https://raw.githubusercontent.com/anfederico/Flaskex/master/media/flaskex-demo.png" width="100%"><p>
 
 ## Features
-- Encrypted user authorizatons
+- Encrypted user authorizaton
 - Database initialization
 - New user signup
 - User login/logout
