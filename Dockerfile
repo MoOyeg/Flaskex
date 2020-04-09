@@ -17,6 +17,6 @@ WORKDIR ${WORK_DIR}
 RUN pip install --no-cache-dir -r requirements.txt
 
 #Expose Ports
-EXPOSE 5000/tcp
+EXPOSE 8080/tcp
 
 CMD [ "python", "app.py" ]
